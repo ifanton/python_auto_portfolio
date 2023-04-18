@@ -11,6 +11,7 @@ class ElementsPage(BasePage):
             'title': 'DEMOQA'
         }
 
+        self.icon = WebElement(driver, 'header > a > img')
         self.btn_sidebar_first = WebElement(driver, locator='div:nth-child(1) > span > div')
         self.btn_sidebar_second = WebElement(driver, locator='div:nth-child(2) > span > div')
-        self.btn_sidebar_second_practice_form = WebElement(driver, locator='div:nth-child(1) > div > ul > li')
+        self.btn_sidebar_second_practice_form = WebElement(driver, locator='div:nth-child(2) > div > ul')
