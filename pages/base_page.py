@@ -1,8 +1,15 @@
+import logging
+
+from components.components import WebElement
+
+
 class BasePage:
 
     def __init__(self, driver, base_url):
         self.driver = driver
         self.base_url = base_url
+
+        self.meta = WebElement(driver, locator='head > meta')
 
     def visit(self):  # метод перехода на страницу
         return self.driver.get(self.base_url)  # возвращает переход через .get()
@@ -26,4 +33,11 @@ class BasePage:
         if self.get_url() == self.base_url:
             return True
         else:
+            return False
+
+    def alert(self):  # проверяет открыто окно алерта или нет, возвращает получение объекта окна
+        try:
+            return self.driver.switch_to.alert
+        except Exception as ex:
+            logging.log(1, ex)
             return False
