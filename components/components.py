@@ -81,3 +81,6 @@ class WebElement:
 
     def scroll_to_element(self):  # прокрутка страницы до элемента
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);", self.find_element())
+
+    def check_css(self, style, value=''):  # возвращает True, если у эл-та есть стиль с указанным значением
+        return self.find_element().value_of_css_property(style) == value
